@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -69,6 +69,8 @@ TEMPLATES = [
         },
     },
 ]
+
+SECURE_BROWSER_XSS_FILTER = True
 
 WSGI_APPLICATION = 'lms.wsgi.application'
 
@@ -125,10 +127,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static_dev'),
-)
 
 CELERY_BROKER_URL = 'redis://localhost:6379'
 
