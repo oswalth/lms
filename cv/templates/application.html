@@ -10,11 +10,29 @@
 
   <title>CV Application</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .myfield{
+            border:1px solid #ccc;
+            border-radius:5px;
+            height:25px;
+            width:200px;
+            margin: 10px 10px 10px 0;
+        }
+    </style>
 </head>
 <body>
+<div class="container">
     <form action="{% url 'application' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form }}
+        <div>
+            {% for field in form %}
+                <div class="row">
+                    {{field.label_tag}}
+                    <div class="col-md-10">{{field}}</div>
+                </div>
+            {% endfor %}
+        </div>
         <input type="submit" class="btn btn-success btn-block mb-3" value="Отправить резюме">
     </form>
+</div>
 </body>

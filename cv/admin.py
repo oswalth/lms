@@ -19,9 +19,3 @@ class ApplicationAdmin(admin.ModelAdmin):
     def snippet_tag(self, obj):
         return mark_safe(f'<code>{obj.snippet}</code>')
 
-    def first_email(self, obj):
-        return True
-
-    def second_email(self, obj):
-        return False
-
